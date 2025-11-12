@@ -6,7 +6,9 @@
 .pnp.js
 
 #files
-/HTML,CSS/Portifolio/videos
+/HTML,CSS/Portifolio/videos/*
+!/HTML,CSS/Portifolio/videos/
+!/HTML,CSS/Portifolio/videos/5K Shooting Stars.mp4
 /Notes
 
 # testing
