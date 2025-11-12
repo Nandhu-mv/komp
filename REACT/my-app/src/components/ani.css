@@ -1,0 +1,16 @@
+#anim{
+
+
+    animation: move 20s linear infinite;
+
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(-450%);
+    }
+
+    100% {
+        transform: translateX(250%);
+    }
+}

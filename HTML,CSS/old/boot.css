@@ -1,0 +1,21 @@
+.nav-link{
+
+    color: rgb(162, 170, 170);
+}
+
+.navbar-brand{
+    color: orangered;
+
+    font-weight: 600;
+}
+
+
+.main{
+    background-color: black;
+    width: 100%;
+    height: auto;
+}
+
+.card{
+    background-color: black;
+}

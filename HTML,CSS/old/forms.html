@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="style0.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="nav0">
+            <h1 class="navtext">INFO</h1>
+
+        </div>
+
+    
+        <div class="nav1">
+        <ul>
+            <li class="text2">Home</li>
+            <li class="text2">About</li>
+            <li class="text2">Service</li>
+            <li class="text2">Contact</li>
+        </ul>
+        </div>
+    </div>
+    <div class="page">
+
+        <form action="" class="form1">
+            <div class="direct">
+                <div class="info1">
+            <label for="name">Name:</label>
+            <input style="background-color: rgba(81, 51, 10, 0.691);" type="text" id="name" name="name" required>
+
+            <br><br>
+                <label for="email">Email:</label>
+                    <input style="background-color: rgba(81, 51, 10, 0.691); type="email" id="email" name="email" required>  
+            <br><br>
+
+            <label for="phone">Phone:</label>
+            <input style="background-color: rgba(81, 51, 10, 0.691);" type="tel" id="phone" name="phone" required>
+
+                    </div>
+            <br><br>
+            <div class="pass">
+            <label for="password">Password:</label>
+            <input style="background-color: rgba(81, 51, 10, 0.691);" type="password" id="password" name="password" required>
+            
+            </div>
+            <br><br>    
+            <div class="info2">
+
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="Male" required >
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" required >
+            <label for="female">Female</label>
+
+            <br><br>
+            <label  for="dob">Date of Birth</label>
+            <input style="background-color: rgba(81, 51, 10, 0.691); " type="date" name="dob" id="dob" required>
+            
+
+            </div>
+
+            <br><br>
+
+            <div class="loc">
+
+            <label for="address">Address</label>
+            <textarea style="width: 300px; height: 100px; background-color: rgba(81, 51, 10, 0.691);" name="address" id="address" required></textarea>
+            <br><br>
+            
+            <label for="country">Country</label>
+            <select style="background-color: rgba(81, 51, 10, 0.691);" name="country" id="country" required>
+                <option value="INDIA">INDIA</option>
+                <option value="USA">USA</option>
+                <option value="JAPAN">JAPAN</option>
+                <option value="EUROPE">EUROPE</option>
+
+            </select>
+
+            
+
+            </div>
+
+            <div class="btnarea">
+
+                <button class="btn"> SUBMIT</button>
+
+            </div>
+
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>
