@@ -7,8 +7,10 @@ import Main from './components/Main'
 // import Third from './components/Third'
 // import One from './components/One'
 //  import Counter from './components/Counter'
-import Calc from './components/Calc'
-import Name from './components/Name'
+// import Calc from './components/Calc'
+// import Name from './components/Name'
+import Cars from './components/Cars'
+import Useff from './components/Useff'
 
 function New() {
   return (
@@ -28,9 +30,13 @@ function New() {
         <ConditionIf2/>
         <Conditional3/> */}
 
-        <Calc />
+        {/* <Calc />
 
-        <Name />
+        <Name /> */}
+
+        <Cars />
+
+        <Useff />
 
         
     </div>

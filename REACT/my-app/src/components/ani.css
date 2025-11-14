@@ -1,4 +1,4 @@
-#anim{
+/* #anim{
 
 
     animation: move 20s linear infinite;
@@ -13,4 +13,4 @@
     100% {
         transform: translateX(250%);
     }
-}
+} */
