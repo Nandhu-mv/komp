@@ -7,12 +7,12 @@ function Cars() {
 
     //useeffect with empty dependency "[]" only runs once
 
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    //     const user = "Nandhu"
-    //     console.log(user)
+        const user = "Nandhu"
+        console.log(user)
 
-    // },[])
+    },[])
 
     // use effect with no dependency run at every new change/action 
     // useEffect(()=>{
@@ -51,17 +51,19 @@ function Cars() {
 
     const [newbrand,setnewbrand] = useState("")
 
-    
+    const handlename =(naam)=>{
+        setnewname(naam);
+    }    
+    const handlebrand =(brnd)=>{
+        setnewbrand(brnd);
+    }    
 
-    const changecar_new =(newname,newbrand)=>{
-
-        setnewname(newname);
-        setnewbrand(newbrand);
+    const changecar_new =()=>{
 
         setcar({
             ...car,
-            name : newname,
-            brand : newbrand,
+            name : `Name : ${newname}`,
+            brand : `Brand : ${newbrand}`,
             image : kog
 
         });
@@ -76,12 +78,15 @@ function Cars() {
         <h2> {car.brand}</h2>
 
         <button onClick={changecar_gtr}> GTR</button>
-{/* 
+
+        <button onClick={changecar_new}> Custom car</button>
+
         <form >
-            <input onSubmit={handlesubmit}/>
-            <button type='Submit' ></button>
+            <input placeholder='Name' onChange={(e)=>handlename(e.target.value)}/>
+            <input placeholder='Brand' onChange={(e)=>handlebrand(e.target.value)} />
+            
         </form>
- */}
+
 
     </div>
   )
