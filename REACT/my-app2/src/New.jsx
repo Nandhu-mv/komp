@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import "./components/New.css"
 
 
 
@@ -12,7 +13,7 @@ function Home() {
   return (
     <div>Home
 
-        <button onClick={()=>nav('/First')} > Click</button>
+        <button  onClick={()=>nav('/First')} > Click</button>
         
 
 
