@@ -1,0 +1,25 @@
+nav{
+    display: flex;
+    background-color: rgb(71, 71, 71);
+}
+
+li{
+    list-style: none;
+}
+
+.naver button{
+
+    background-color: aliceblue;
+    border-radius: 5px;
+    color: rgb(43, 43, 43);
+    margin: 20px;
+    margin-inline: 5px;
+    margin-top: 10px;
+    box-shadow: none;
+
+}
+.naver button:hover{
+    background-color: rgb(35, 35, 35);
+    color: rgb(184, 184, 184);
+}
+

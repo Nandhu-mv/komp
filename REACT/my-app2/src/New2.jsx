@@ -1,14 +1,20 @@
 import React from 'react'
-import { useContext,createContext } from 'react'
+import { useContext,createContext, } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 const TextContext = createContext();
 
 function New2() {
 
+  const nav = useNavigate();
+
   const text = "!@#$%^UseContext!@#$%^&*"
 
   return (
     <div>
+        <button onClick={()=>nav("/Third")}> Go to 3</button>
+
         <TextContext.Provider value={text}>
 
         <h1>This is {text}</h1>
