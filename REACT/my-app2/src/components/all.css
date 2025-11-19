@@ -1,0 +1,35 @@
+.container{
+    width: auto;
+    height: auto;
+}
+
+.maincard{
+
+    width: 100%;
+    height: auto;
+}
+
+.maincard img{
+    width: 80%;
+    max-height: 700px;
+}
+
+button{
+    width: 150px;
+    height: 40px;
+}
+
+.contain{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.card img{
+
+    width: 400px;
+}
+
+.card img:hover{
+
+    opacity: 80%;
+}

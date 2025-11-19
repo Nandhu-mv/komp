@@ -12,9 +12,9 @@ function Sub(props) {
             <div className='ccontainer' id='anim' key={index}>
             <div className='card'>
                 <img src={item.image} alt={item.name} /> 
-                <h2>Name : {item.name}</h2>
-                <h3>Brand : {item.brand}</h3>
-                <h3>Price : {item.price}</h3>
+                <h2>Name : {item.name} </h2>
+                <h3>Brand : {item.brand} </h3>
+                <h3>Price : {item.price} </h3>
 
 
             </div>
