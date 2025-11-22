@@ -1,0 +1,124 @@
+.formpage{
+    background: url('../public/images/formimg.jpg') no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-self: start;
+    padding-left: 100px;
+    padding-top: 100px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+form{
+    background-color: rgba(62, 62, 62, 0.829);
+    justify-content: center;
+    display: flex;
+    padding-bottom: 30px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: white;
+    font-size: 28px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+
+#fullname{
+    font-size: 30px;
+    position: relative;
+    right: 10px;
+}
+
+
+label{
+    margin: 10px;
+    margin-inline: 20px;
+}
+
+input{
+    width: auto;
+    font-weight: 700;
+    max-width: 250px;
+    margin-inline: 20px;
+    background-color: rgba(249, 255, 252, 0.808);
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+
+}
+
+#gball{
+    height: 15px;
+}
+
+#dofb{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    color: rgb(44, 44, 44);
+}
+
+#dob{
+
+    width: 300px;
+
+}
+
+#gender{
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+
+}
+
+
+#gender label input{
+    width: 40px;
+
+}
+#gender label{
+    font-size: 28px;
+
+}
+
+#subber{
+    margin-left: 40px;
+    font-size: medium;
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-self: center;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 7px 3px rgb(21, 34, 48);
+    transition: .3s ;
+}
+
+#subber:active{
+    margin-left: 40px;
+    color: rgb(255, 254, 254);
+    align-self: center;
+    background-color: rgb(61, 61, 61);
+    box-shadow: 0px 0px 20px rgb(175, 175, 175);
+    transform: translateY(7px);
+
+}
+
+.shower{
+    margin-inline: 100px;
+    padding: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(186, 186, 186, 0.867);
+    border-radius: 20px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.contents{
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
