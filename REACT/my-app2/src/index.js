@@ -4,16 +4,18 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import All from './All';
-import Multiform from './Multiform';
-
+// import Multiform from './Multiform';
+import Fetch from './Fetch';
+import Fetchaxi from './Fetchaxios';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     {/* <App /> */}
     {/* <All /> */}
 
-    <Multiform />
-  
+    {/* <Multiform /> */}
+    <Fetch />
+    <Fetchaxi />
   </>
 );
 

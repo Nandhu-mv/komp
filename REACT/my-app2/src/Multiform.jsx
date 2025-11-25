@@ -20,7 +20,9 @@ function Multiform() {
         if (inputs.firstname !== undefined ) {
 
         alert(` ${inputs.firstname}'s details have been submitted `)
-        setshow((show)=>!show)
+        
+        setTimeout(()=>{setshow((show)=>!show)},5000);
+        
             
         }
 
