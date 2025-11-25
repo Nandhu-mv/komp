@@ -5,8 +5,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 // import All from './All';
 // import Multiform from './Multiform';
-import Fetch from './Fetch';
-import Fetchaxi from './Fetchaxios';
+// import Fetch from './Fetch';
+// import Fetchaxi from './Fetchaxios';
+import BasicExample from './New4';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
@@ -14,8 +15,9 @@ root.render(
     {/* <All /> */}
 
     {/* <Multiform /> */}
-    <Fetch />
-    <Fetchaxi />
+    {/* <Fetch />
+    <Fetchaxi /> */}
+    <BasicExample />
   </>
 );
 
