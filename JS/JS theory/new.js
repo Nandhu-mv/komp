@@ -503,7 +503,7 @@
 //                                      !!!!!!!   Splice  !!!!!
  
 
-//     ar.splice(1,0,23)  // position , no. of deleted elems from that position, added elems a that position
+//     ar.splice(1,0,23)  //   ---  Selected Position , no. of deleted elems from that position, added elems a that position
 
 //     console.log(ar);
     
@@ -560,6 +560,7 @@
 //      fl1.forEach(n => { Number(n) });
 //       console.log(num01.flat().map(n=>n*n));
       
+                                        // SORTing
     
 //     let nra = new Array
 

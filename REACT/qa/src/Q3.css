@@ -1,0 +1,59 @@
+
+nav{
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(90deg,rgba(28, 33, 43, 0.498),rgba(23, 23, 30, 0.537));
+}
+
+
+table{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+table tr th{
+    font-size: 30px;
+    padding-inline: 20px;
+}
+
+table tr td{
+    max-width: 400px;
+    text-align: start;
+    padding: 5px;
+    
+}
+
+
+
+td{
+    border: 2px solid black;
+}
+
+td img {
+    max-width: 150px;
+}
+
+.detail{
+    margin: 30px;
+    background-color: rgba(240, 248, 255, 0.348);
+    border-radius: 40px;
+    width: 800px;
+    padding: 30px;
+}
+
+.detail p{
+    width: 700px;
+}
+
+button{
+    margin-top: 50px;
+    border: none;
+    box-shadow: 0px 5px 10px black;
+
+}
+
+.detail button{
+    width: 150px;
+    height: 40px;
+    font-size: large;
+}
