@@ -76,7 +76,7 @@ function Q3() {
                     <td>{i.title}</td>
                     <td>{i.price}</td>
                     <td><img src={i.image} alt="imger" />
-                        <button onClick={()=>handleclick(i)}><i className="fa-solid fa-eye"></i></button>
+                        <button className='eye' onClick={()=>handleclick(i)}><i className="fa-solid fa-eye"></i></button>
                         </td>
                 </tr>
 

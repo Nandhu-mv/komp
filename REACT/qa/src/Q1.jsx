@@ -57,9 +57,9 @@ function Q1() {
         <h2> Name sorted in descending order of price </h2>
 
         {
-            tempnames.map(e => (
+            tempnames.map((e,index) => (
 
-                <h1>{e}</h1>
+                <h1 key={index}>{e}</h1>
             ))
         }
 
