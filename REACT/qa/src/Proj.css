@@ -1,0 +1,190 @@
+/* Nav*/
+
+nav{
+    width: 100%;
+    margin-top: -27px;
+    background: linear-gradient(50deg,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+    height: 50px;
+    text-align: center;
+    color: rgb(255, 239, 183);
+    font-family: "UnifrakturMaguntia", cursive;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
+/* Button  */
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+  width: 240px;
+  height: 70px;
+  margin-top: 50px;
+  margin-left: 50px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+}
+
+.Btn::before {
+  position: absolute;
+  content: "START";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+}
+
+.Btn:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.Btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.Btn:active {
+  transform: scale(0.95);
+}
+
+
+
+.box{
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgb(109, 82, 12);
+    background-color: rgba(164, 164, 164, 0.277);
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: bisque;
+    
+}
+.boxg{
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgb(255, 170, 0);
+    background: linear-gradient(60deg,#ffd277,#77530a,#ffd277);
+    text-align: center;
+    font-size: 30px;
+    font-size: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(0, 0, 0);
+    
+    
+}
+
+.hintbox{
+    background-color: #ffd277;
+    padding-inline: 30px;
+    max-width: 150px;
+    position: absolute;
+    right: 30px;
+    top: 60px;
+}
+
+button{
+    width: 200px;
+}
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+.checkbox {
+  position: relative;
+  margin-left: 1050px;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  color: rgb(17, 0, 0);
+  background-color: #77530a;
+}
+
+.checkbox:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px #ffd277;
+}
+
+.checkbox:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px #ffd277;
+}
+
+.checkbox::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.checkbox::after {
+  background-color: #ffd05bd5;
+}
+
+.checkbox:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+
+.boxer{
+    display: flex;
+    gap: 10px;
+    margin-left: 700px ;
+}
+
+.all{
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+}
+
+
+.won{
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+  background: #ffd277;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
+  z-index: 1000;
+}

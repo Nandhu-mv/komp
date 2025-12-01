@@ -1,9 +1,7 @@
-
-*{margin: 0;}
-
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Lavishly+Yours&family=UnifrakturMaguntia&display=swap');
 body {
   margin: 0;
-  background-color: rgb(121, 147, 104);
+  background-color: rgb(15, 11, 7);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
