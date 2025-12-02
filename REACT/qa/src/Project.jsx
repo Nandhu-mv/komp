@@ -30,9 +30,8 @@ function Project() {
 
     useEffect (()=>{
 
-
-
       
+
     })
 
 
@@ -194,7 +193,7 @@ function Project() {
 
     <>
 
-    <nav> <h1> WORDLE</h1></nav>
+    <nav> Wordle</nav>
 
 
     <div className='all'>

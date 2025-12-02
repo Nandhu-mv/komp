@@ -2,13 +2,12 @@
 
 nav{
     width: 100%;
-    margin-top: -27px;
     background: linear-gradient(50deg,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
     height: 50px;
     text-align: center;
     color: rgb(255, 239, 183);
     font-family: "UnifrakturMaguntia", cursive;
-    font-size: 20px;
+    font-size: 50px;
     font-weight: 400;
     font-style: normal;
 }
@@ -187,4 +186,11 @@ button{
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   text-align: center;
   z-index: 1000;
+}
+
+
+
+.container{
+  width: 400px;
+  overflow: hidden  ;
 }

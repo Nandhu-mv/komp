@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 // import Calc from './Calc';
-import Project from './Project';
+// import Project from './Project';
+import Projhome from './Projhome';
 
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-  <Project />
+    <Projhome />
+  {/* <Project /> */}
     {/* <App /> */}
     {/* <Calc /> */}
   </>
