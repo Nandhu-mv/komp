@@ -9,11 +9,12 @@ function Home() {
         
         <nav> Reactivites </nav>
 
-        <div className='container'>
+        <div className="container">
 
-            <Gamebox gob = {{name : 'wordle',link: 'wordle'}} />  
-                
+              <Gamebox gname="wordle" glink="wordle" gimg ='wordle.png' />
+
         </div>
+
 
 
 

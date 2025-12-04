@@ -192,5 +192,6 @@ button{
 
 .container{
   width: 400px;
-  overflow: hidden  ;
+  height: 400px;
+  background-color: rgb(181, 103, 0);
 }

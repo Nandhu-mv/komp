@@ -8,9 +8,11 @@ function Gamebox(gob) {
   return (
     <div className='gamebox'>
 
-        <h1>{gob.name} </h1>
+        <img src={`{gob.gimg}`}   alt="wordle" />
 
-        <button onClick={nav(`./${gob.link}`)}> </button>
+        <h1>{gob.gname} </h1>
+
+        <button onClick={()=>nav(`./${gob.glink}`)}> {gob.gname}</button>
 
 
 
