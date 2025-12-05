@@ -4,8 +4,9 @@ import './index.css';
 // import App from './App';
 // import Calc from './Calc';
 // import Project from './Project';
-import Projhome from './Projhome';
+// import Projhome from './Projhome';
 // import Getpostdelete from './Getpostdelete';
+import Gamestore from './Gamestore';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -13,8 +14,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+  <Gamestore />
     {/* <Getpostdelete /> */}
-    <Projhome />
+    {/* <Projhome /> */}
   {/* <Project /> */}
     {/* <App /> */}
     {/* <Calc /> */}
