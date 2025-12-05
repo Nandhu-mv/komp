@@ -1,0 +1,104 @@
+
+.gamebox h1{
+    margin: 10px;
+    color: goldenrod;
+    text-shadow: 2px 2px 2px rgb(49, 32, 0);
+
+}
+
+
+
+.gamebox{
+    margin: 40px;
+    color: #0e2961;
+    border-radius: 20px;
+    width: 400px;
+    background: #969393;
+    background: linear-gradient(42deg,rgba(140, 139, 139, 1) 10%, rgba(207, 200, 200, 1) 32%, rgba(143, 143, 143, 1) 60%, rgba(207, 207, 207, 1) 92%);
+    background-size: 250%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 1s;
+    overflow: hidden;
+
+}
+
+.gamebox img{
+    margin-top: 20px;
+    border: 4px gold solid;
+    border-radius: 20px;
+    width: 80%;
+}
+
+.gamebox::before {
+  
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+}
+
+.gamebox:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.gamebox:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.gamebox:active {
+  transform: scale(0.95);
+}
+
+.Btn1 {
+  width: 120px;
+  height: 40px;
+  margin-top: 0px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+}
+
+.Btn1::before {
+  position: absolute;
+  content: "Play";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+}
+
+.Btn1:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.Btn1:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.Btn1:active {
+  transform: scale(0.95);
+}

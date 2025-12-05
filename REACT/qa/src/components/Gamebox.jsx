@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import './gb.css'
 
 function Gamebox(gob) {
 
@@ -8,11 +9,11 @@ function Gamebox(gob) {
   return (
     <div className='gamebox'>
 
-        <img src={`{gob.gimg}`}   alt="wordle" />
+        <img src={`./${gob.gimg}`}   alt="wordle" />
 
-        <h1>{gob.gname} </h1>
+        <h1>{gob.gname.toUpperCase()} </h1>
 
-        <button onClick={()=>nav(`./${gob.glink}`)}> {gob.gname}</button>
+        <button className='Btn1' onClick={()=>nav(`./${gob.glink}`)}> {gob.gname}</button>
 
 
 

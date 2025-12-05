@@ -4,8 +4,8 @@ import './index.css';
 // import App from './App';
 // import Calc from './Calc';
 // import Project from './Project';
-// import Projhome from './Projhome';
-import Getpostdelete from './Getpostdelete';
+import Projhome from './Projhome';
+// import Getpostdelete from './Getpostdelete';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -13,8 +13,8 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Getpostdelete />
-    {/* <Projhome /> */}
+    {/* <Getpostdelete /> */}
+    <Projhome />
   {/* <Project /> */}
     {/* <App /> */}
     {/* <Calc /> */}
