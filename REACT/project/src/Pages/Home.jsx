@@ -18,16 +18,20 @@ function Home() {
   const [show, setShow] = useState(false);
 
   const [sgames, setsgames] = useState([]);
+
   const [ggames, setggames] = useState([]);
+  
+   const [selectedGenre, setSelectedGenre] = useState('Adventure');
+
 
 
   const [game, setGame] = useState(null);
   const [error, setError] = useState(null);
   const [Loading, setLoading] = useState(false);
 
-  //   useEffect(() => {
-  //   console.log("UPDATED GAME:", game.similarGames);
-  // }, [game]);
+    useEffect(() => {
+    console.log("UPDATED GAME:", ggames);
+  }, [ggames]);
 
 
         // for maingame
@@ -57,24 +61,27 @@ function Home() {
 
       // by genre sort
 
+      const GENRES = [
+          "Arcade","Adventure","Fighting","Racing","Shooter","RPG","Simulator","Puzzle",
+          "Sport","Strategy","Visual Novel","Music","Platform"
+        ];
+
   useEffect(() => {
+  if (!selectedGenre) return;
 
-    const fetchGamesbygenre = async () => {
-
-      try {
-        const res = await axios.get(`http://localhost:5000/games-by-genre?genre=adventure`);
-        setggames(res.data);
-        console.log(res.data);
-
-      } catch (err) {
-        console.error("Error fetching games:", err);
-      }
-    };
-
-    if (search) {
-      fetchGamesbygenre();
+  const fetchGamesByGenre = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/games-by-genre?genre=${selectedGenre}`
+      );
+      setggames(res.data);
+    } catch (err) {
+      console.error("Error fetching games:", err);
     }
-  }, [ggames]);
+  };
+
+  fetchGamesByGenre();
+}, [selectedGenre]);
 
 
 
@@ -106,6 +113,13 @@ function Home() {
   const handlesearch = (e) => {
 
     setSearch(e.target.value);
+
+  }
+
+  const handleclickgenre = (id) =>{
+
+    setgameId(id);
+    sethome(false);
 
   }
 
@@ -160,15 +174,11 @@ function Home() {
           <li className='lidrop'>
             Catagory <i className="fa-solid fa-caret-down"></i>
             <ul className='dropcontent'>
-              <li>Action</li>
-              <li>Adventure</li>
-              <li>Shooter</li>
-              <li>Racing</li>
-              <li>Puzzle</li>
-              <li>Stratergy</li>
-              <li>BoardGames</li>
-              <li>Side-Scroller</li>
-              <li>Visual Novel</li>
+              {GENRES.map((g) => (
+                <li key={g} onClick={() => { setSelectedGenre(g); sethome(true); }}>
+                  {g}
+                </li>
+              ))}
             </ul>
           </li>
 
@@ -271,7 +281,7 @@ function Home() {
           <Row xs={1} md={5} className="g-4">
             {game.similarGames?.map((i) => (
               <Col key={i.id}>
-                <Card onClick={()=>setgameId(i.id)} text='white' bg='dark' border='dark' id={i.id}>
+                <Card className='simcards' onClick={()=>setgameId(i.id)} text='white' bg='dark' border='dark' id={i.id}>
                   <img
                     src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${i.cover?.image_id}.jpg`}
                     alt={`similargame-${i.name}`}
@@ -298,6 +308,30 @@ function Home() {
 
 
       </div>}
+
+      {home && <div className='genreitems'> 
+
+        <Row xs={1} md={5} className="g-4">
+            {ggames?.map((i) => (
+              <Col key={i.id}>
+                <Card className='cards' onClick={()=>handleclickgenre(i.id) } text='white' bg='dark' border='dark' id={i.id}>
+                  <div className="imgcontainer">
+                  <img
+                    src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${i.cover?.image_id}.jpg`}
+                    alt={`ggames-${i.name}`}
+                  />
+                  </div>
+                  <Card.Body >
+                    <Card.Title>{i.name}</Card.Title>
+
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        
+        
+      </div> }
 
 
 

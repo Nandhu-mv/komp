@@ -1,5 +1,5 @@
 .mainpage { 
-    background: linear-gradient(#000000,#004b4a); height: 300vh; overflow-x: hidden; }
+    background: linear-gradient(#000000,#004b4a); height: auto; overflow-x: hidden; }
     
     
 
@@ -117,3 +117,64 @@
     list-style: none;
     font-size: 14px;
 }
+
+.simcards{
+
+    position: relative;
+    transition: .5s;
+
+}
+
+.simcards:hover{
+
+    transform: scale(105%) ;
+
+
+}
+
+
+.cards{
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.cards:hover{
+    
+    transform: scale(105%) translateY(-20px);
+}
+
+
+.cards img{
+    width: 130%;
+    height: 140%;
+    
+
+}
+
+.imgcontainer:hover {
+    overflow: visible;
+}
+
+.imgcontainer img:hover{
+
+    border-radius: 20px;
+
+}
+
+.imgcontainer{
+
+    display: flex;
+    border-radius: 15px 15px 0px 0px;
+    justify-content: center;
+    overflow: hidden;
+    height: 300px;
+    transition: 2s;
+
+}
+
+
+.genreitems{
+    width: 90%;
+    margin: 100px auto;
+}
+

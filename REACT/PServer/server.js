@@ -80,14 +80,13 @@ app.get("/games-by-genre", async (req, res) => {
     try {
         const token = await getAccessToken();
 
-        // Check if genreQuery is a number (ID)
         let genreId = Number(genreQuery);
 
-        // If not a number → treat it as a name and fetch ID
+        // If NOT numeric → treat as name
         if (isNaN(genreId)) {
-            const genreSearch = await axios.post(
+            const genreList = await axios.post(
                 "https://api.igdb.com/v4/genres",
-                `search "${genreQuery}"; fields name; limit 10;`,
+                "fields id,name; limit 500;",
                 {
                     headers: {
                         "Client-ID": CLIENT_ID,
@@ -97,19 +96,26 @@ app.get("/games-by-genre", async (req, res) => {
                 }
             );
 
-            if (!genreSearch.data.length) {
+            const match = genreList.data.find(
+                g => g.name.toLowerCase() === genreQuery.toLowerCase()
+            );
+
+            if (!match) {
                 return res.status(404).json({ error: "Genre not found" });
             }
 
-            genreId = genreSearch.data[0].id;
+            genreId = match.id;
         }
 
-        // Fetch games with this genre ID
-        const response = await axios.post(
+        // Fetch games of that genre
+        const games = await axios.post(
             "https://api.igdb.com/v4/games",
-            `fields name, summary, cover.url, genres;
-             where genres = ${genreId};
-             limit 20;`,
+            `
+            fields name, summary, cover.image_id, genres, rating;
+            where genres = ${genreId} & cover != null;
+            sort rating desc;
+            limit 20;
+            `,
             {
                 headers: {
                     "Client-ID": CLIENT_ID,
@@ -119,7 +125,7 @@ app.get("/games-by-genre", async (req, res) => {
             }
         );
 
-        res.json(response.data);
+        res.json(games.data);
 
     } catch (err) {
         console.error(err.response?.data || err);
