@@ -1,38 +1,45 @@
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");  // <-- import cors
 
 const app = express();
+
+app.use(cors()); // <-- enable CORS for all routes
 app.use(express.json());
 
-
-const CLIENT_ID = "1tj8rx39ifu2sun4ti1z4739s5ottx";
-const CLIENT_SECRET = "caqbf6efoba9jcfpyqadic1ic6zz4j";
+// Twitch/IGDB credentials
+const CLIENT_ID = "1tj8rx39ifu2sun4ti1z4739s5ottx";   // Your Client ID
+const CLIENT_SECRET = "zzsagxwqjxfz4hn0cfiyjebxzqb99b"; // Your Client Secret
 
 let accessToken = "";
 let tokenExpiry = 0;
 
-
+// --- Get App Access Token from Twitch ---
 async function getAccessToken() {
-    if (Date.now() < tokenExpiry && accessToken) {
-        return accessToken;
-    }
+    // Return cached token if still valid
+    if (accessToken && Date.now() < tokenExpiry) return accessToken;
 
-    const res = await axios.post(
-        "https://id.twitch.tv/oauth2/token",
-        null,
-        {
-            params: {
-                client_id: CLIENT_ID,
-                client_secret: CLIENT_SECRET,
-                grant_type: "client_credentials",
+    try {
+        const res = await axios.post(
+            "https://id.twitch.tv/oauth2/token",
+            null,
+            {
+                params: {
+                    client_id: CLIENT_ID,
+                    client_secret: CLIENT_SECRET,
+                    grant_type: "client_credentials",
+                }
             }
-        }
-    );
+        );
 
-    accessToken = res.data.access_token;
-    tokenExpiry = Date.now() + res.data.expires_in * 1000;
-
-    return accessToken;
+        accessToken = res.data.access_token;
+        tokenExpiry = Date.now() + res.data.expires_in * 1000 - 60000; // Refresh 1 min before expiry
+        console.log("New IGDB Access Token fetched");
+        return accessToken;
+    } catch (err) {
+        console.error("Failed to get access token:", err.response?.data || err);
+        throw new Error("IGDB Auth Failed");
+    }
 }
 
 
@@ -64,14 +71,40 @@ app.get("/games", async (req, res) => {
 });
 
 
-app.post("/games", express.text(), async (req, res) => {
-    try {
-        const query = req.body;
-        const token = await getAccessToken();  
 
-        const result = await axios.post(
+
+async function fetchRelated(endpoint, ids, fields, token) {
+    if (!ids || ids.length === 0) return [];
+    const res = await axios.post(
+        `https://api.igdb.com/v4/${endpoint}`,
+        `fields ${fields}; where id = (${ids.join(",")}); limit ${ids.length};`,
+        {
+            headers: {
+                "Client-ID": CLIENT_ID,
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "text/plain",
+            }
+        }
+    );
+    return res.data;
+}
+
+    
+app.get("/fullgame", async (req, res) => {
+    const gameId = req.query.id;
+    if (!gameId) return res.status(400).json({ error: "Missing ?id=GAME_ID" });
+
+    try {
+        const token = await getAccessToken();
+
+        // 1️⃣ Fetch main game info
+        const gameRes = await axios.post(
             "https://api.igdb.com/v4/games",
-            query,
+            `
+            fields name,summary,storyline,first_release_date,cover,screenshots,artworks,genres,themes,platforms,involved_companies,videos,similar_games;
+            where id = ${gameId};
+            limit 1;
+            `,
             {
                 headers: {
                     "Client-ID": CLIENT_ID,
@@ -81,67 +114,10 @@ app.post("/games", express.text(), async (req, res) => {
             }
         );
 
-
-        res.json(result.data);
-    } catch (error) {
-        console.error(error.response?.data || error);
-        res.status(500).json({ error: error.message });
-    }
-});
-
-
-
-//fullgame
-
-app.get("/fullgame", async (req, res) => {
-    const gameId = req.query.id;
-    if (!gameId) return res.status(400).json({ error: "Missing ?id=GAME_ID" });
-
-    try {
-        const token = await getAccessToken();
-
-        // --- 1. MAIN GAME FETCH ---
-        const gameRes = await axios.post(
-            "https://api.igdb.com/v4/games",
-            `
-                fields name,summary,storyline,first_release_date,cover,screenshots,artworks,genres,themes,platforms,involved_companies,videos,similar_games;
-                where id = ${gameId};
-                limit 1;
-            `,
-            {
-                headers: {
-                    "Client-ID": CLIENT_ID,
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "text/plain"
-                }
-            }
-        );
-
         const game = gameRes.data[0];
-        if (!game) return res.status(404).json({ error: "Game not found" }); 
+        if (!game) return res.status(404).json({ error: "Game not found" });
 
-        // Helper fetcher
-        async function fetchRelated(endpoint, ids, fields) {
-            if (!ids || ids.length === 0) return [];
-            const r = await axios.post(
-                `https://api.igdb.com/v4/${endpoint}`,
-                `
-                    fields ${fields};
-                    where id = (${ids.join(",")});
-                    limit ${ids.length};
-                `,
-                {
-                    headers: {
-                        "Client-ID": CLIENT_ID,
-                        "Authorization": `Bearer ${token}`,
-                        "Content-Type": "text/plain"
-                    }
-                }
-            );
-            return r.data;
-        }
-
-        // --- 2. PARALLEL FETCH RELATED DATA ---
+        // 2️⃣ Fetch related data in parallel
         const [
             cover,
             screenshots,
@@ -151,20 +127,20 @@ app.get("/fullgame", async (req, res) => {
             platforms,
             involvedCompanies,
             videos,
-            similarGames,
+            similarGames
         ] = await Promise.all([
-            fetchRelated("covers", game.cover ? [game.cover] : [], "url,image_id"),
-            fetchRelated("screenshots", game.screenshots, "url,image_id"),
-            fetchRelated("artworks", game.artworks, "url,image_id"),
-            fetchRelated("genres", game.genres, "name"),
-            fetchRelated("themes", game.themes, "name"),
-            fetchRelated("platforms", game.platforms, "name,abbreviation"),
-            fetchRelated("involved_companies", game.involved_companies, "company,developer,publisher"),
-            fetchRelated("game_videos", game.videos, "video_id"),
-            fetchRelated("games", game.similar_games, "name,cover")
+            fetchRelated("covers", game.cover ? [game.cover] : [], "url,image_id", token),
+            fetchRelated("screenshots", game.screenshots, "url,image_id", token),
+            fetchRelated("artworks", game.artworks, "url,image_id", token),
+            fetchRelated("genres", game.genres, "name", token),
+            fetchRelated("themes", game.themes, "name", token),
+            fetchRelated("platforms", game.platforms, "name,abbreviation", token),
+            fetchRelated("involved_companies", game.involved_companies, "company,developer,publisher", token),
+            fetchRelated("game_videos", game.videos, "video_id", token),
+            fetchRelated("games", game.similar_games, "name,cover,url,image_id", token)
         ]);
 
-        // --- 3. RETURN MERGED RESULT ---
+        // 3️⃣ Return combined result
         res.json({
             ...game,
             cover,
@@ -178,18 +154,13 @@ app.get("/fullgame", async (req, res) => {
             similarGames
         });
 
-    } catch (error) {
-        console.error(error.response?.data || error);
+    } catch (err) {
+        console.error(err.response?.data || err);
         res.status(500).json({ error: "Failed to fetch full game details" });
     }
 });
 
-
-
-
-
-
-// Start server
+// --- Start Server ---
 app.listen(5000, () => {
     console.log("Server running on port 5000");
 });

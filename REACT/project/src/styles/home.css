@@ -1,0 +1,107 @@
+.mainpage { 
+    background: linear-gradient(#000000,#004b4a); height: 300vh; overflow-x: hidden; }
+    
+    
+.logo img{ width: 40px; height: 40px; }
+
+.logo{ position: absolute; top: 35px; left: 50px; font-family: "Jersey 15", sans-serif; font-weight: 400; color: white; font-size: 50px; font-style: normal; }
+
+.nav1 input{ left: 0px; width: 400px; height: 50px; border: none; border-radius: 30px; padding-inline: 30px; }
+
+.searchitems{ position: absolute; top: 90px; left: 560px; background-color: #400200; color: white; z-index: 100; }
+
+.searchitems li{ display: flex; gap: 10px;
+    font-weight: 600; list-style: none; padding-inline-end: 20px; padding-inline-start: 5px; padding-bottom: 5px; cursor: pointer; } 
+
+.searchitems li img{
+    padding-block: 5px;
+    width: 50px;
+}
+
+.searchitems li:hover { background-color: #ffffff; color: rgb(44, 0, 0); } 
+
+.nav1 ul{ display: flex; gap: 30px; margin-right: 200px; font-size: 20px; } 
+
+.nav1 ul li{ list-style: none; font-family: "Jersey 15", sans-serif; font-size: 30px; border-radius: 10px; padding: 10px; padding-inline: 40px; } 
+
+.nav1 ul li:hover{ color: rgb(0, 159, 180); cursor: pointer; } 
+
+.nav1{ display: flex; justify-content: end; align-items: center; background: linear-gradient(90deg,#400200ac,#110000b0); width: 100%; height: 120px; color: white; } 
+
+.nav2{ background-color: #ff8d29; width: 100%; height: 40px; font-weight: 600; } 
+
+.nav2ulist{ list-style: none; margin-left: 10px; margin-right: 20px; width: 500px; justify-content: space-between; display: flex; gap: 10px; padding-top: 5px; cursor: pointer; } 
+
+.lidrop{ position: relative; } 
+
+.lidrop:hover .dropcontent{ display: block; } 
+
+.dropcontent{ z-index: 10; display: none; padding: 0; box-shadow: 3px 3px 5px #000000; position: absolute; top: 20px; left: -10px; background-color: rgb(169, 90, 0); } 
+
+.dropcontent li{ list-style: none; padding: 10px; padding-inline: 30px; font-size: small; color: rgb(255, 204, 146); } 
+
+.dropcontent li:hover{ background-color: #0000007c; } /* maingames */ /* carousals */ 
+
+
+.loadingpage{
+    top: 0;
+    position: absolute;
+    background-color: #000000d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.main-games{ } 
+
+
+
+
+.topinfo{ margin: 5%; display: flex; gap: 150px; align-items: center; } 
+
+.coverimg{ width : 300px; border-Radius: 10px; margin-Bottom: 20px ; } 
+
+.gamename{ color: white; font-size: 70px; } .textinfo p{ color: white; width: 70%; font-size: larger; }
+
+
+.gamecontent{
+
+    margin: 0 auto;
+    height: 800px;
+    width: 95%;
+    padding-block: 50px;
+    background: linear-gradient(0deg,rgba(42, 0, 0, 0.578),rgba(0, 12, 68, 0.289));
+    display: flex;
+    justify-content: center;
+    
+}
+
+.ss{
+    margin-top: 5%;
+    width: 45%;
+    margin-inline: 10px; } 
+
+.gametrailer{
+    margin-block: 5%;
+}
+    
+.trailer {
+    border-radius: 15px;
+    overflow: hidden;
+    width: 400px;
+    height: 220px;
+}
+
+.trailerfull{
+    position: absolute;
+    top: 50%;
+    width: 70%;
+    
+}
+
+.notrailer{
+    display: none;
+}
