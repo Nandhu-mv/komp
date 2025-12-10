@@ -70,6 +70,63 @@ app.get("/games", async (req, res) => {
     }
 });
 
+app.get("/games-by-genre", async (req, res) => {
+    const genreQuery = req.query.genre;
+
+    if (!genreQuery) {
+        return res.status(400).json({ error: "Missing ?genre=GENRE_NAME_OR_ID" });
+    }
+
+    try {
+        const token = await getAccessToken();
+
+        // Check if genreQuery is a number (ID)
+        let genreId = Number(genreQuery);
+
+        // If not a number → treat it as a name and fetch ID
+        if (isNaN(genreId)) {
+            const genreSearch = await axios.post(
+                "https://api.igdb.com/v4/genres",
+                `search "${genreQuery}"; fields name; limit 10;`,
+                {
+                    headers: {
+                        "Client-ID": CLIENT_ID,
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "text/plain",
+                    }
+                }
+            );
+
+            if (!genreSearch.data.length) {
+                return res.status(404).json({ error: "Genre not found" });
+            }
+
+            genreId = genreSearch.data[0].id;
+        }
+
+        // Fetch games with this genre ID
+        const response = await axios.post(
+            "https://api.igdb.com/v4/games",
+            `fields name, summary, cover.url, genres;
+             where genres = ${genreId};
+             limit 20;`,
+            {
+                headers: {
+                    "Client-ID": CLIENT_ID,
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "text/plain",
+                }
+            }
+        );
+
+        res.json(response.data);
+
+    } catch (err) {
+        console.error(err.response?.data || err);
+        res.status(500).json({ error: "Failed to fetch games by genre" });
+    }
+});
+
 
 
 
@@ -132,12 +189,12 @@ app.get("/fullgame", async (req, res) => {
             fetchRelated("covers", game.cover ? [game.cover] : [], "url,image_id", token),
             fetchRelated("screenshots", game.screenshots, "url,image_id", token),
             fetchRelated("artworks", game.artworks, "url,image_id", token),
-            fetchRelated("genres", game.genres, "name", token),
+            fetchRelated("genres", game.genres, "name,id", token),
             fetchRelated("themes", game.themes, "name", token),
             fetchRelated("platforms", game.platforms, "name,abbreviation", token),
             fetchRelated("involved_companies", game.involved_companies, "company,developer,publisher", token),
             fetchRelated("game_videos", game.videos, "video_id", token),
-            fetchRelated("games", game.similar_games, "name,cover,url,image_id", token)
+            fetchRelated("games", game.similar_games, "name,cover.image_id,genres.name", token)
         ]);
 
         // 3️⃣ Return combined result

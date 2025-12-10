@@ -15,3 +15,28 @@
     50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
     66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
 }
+
+
+.logo img{ width: 40px; height: 40px; }
+
+.logo{ cursor:crosshair; position: relative; bottom: 0px; left: -200px;transition: 2s;  font-family: "Jersey 15", sans-serif; font-weight: 400; color: white; font-size: 50px; font-style: normal; }
+
+.logo {
+    color: #afafaf;
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e;
+    }
+    30% {
+        color: #ffffff;
+        text-shadow: 0 0 5px #e70055, 0 0 10px #e40054;
+    }
+    100% {
+        color: #2b181f;
+        text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff;
+    }
+}
