@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 function Home() {
 
   const [gameId, setgameId] = useState(121);
-  const [home, sethome] = useState(false);
+  const [home, sethome] = useState(true);
 
 
   const [search, setSearch] = useState(null);
@@ -278,6 +278,8 @@ function Home() {
 
         <div className="similargames">
 
+          <h2 style={{color:"white"}} >Similar Games</h2>
+
           <Row xs={1} md={5} className="g-4">
             {game.similarGames?.map((i) => (
               <Col key={i.id}>
@@ -311,7 +313,7 @@ function Home() {
 
       {home && <div className='genreitems'> 
 
-        <Row xs={1} md={5} className="g-4">
+        <Row xs={1} md={5} className="g-5">
             {ggames?.map((i) => (
               <Col key={i.id}>
                 <Card className='cards' onClick={()=>handleclickgenre(i.id) } text='white' bg='dark' border='dark' id={i.id}>
@@ -334,6 +336,39 @@ function Home() {
       </div> }
 
 
+
+      <footer className="footer">
+      <div className="footer-container">
+
+        <div className="footer-section">
+          <h3 className="footer-title">Spade's Arcade</h3>
+          <p className="footer-text">Your one-stop place for awesome games.</p>
+        </div>
+
+        <div className="footer-section">
+          <h3 className="footer-title">Links</h3>
+          <ul className="footer-list">
+            <li><a href="/" className="footer-link">Home</a></li>
+            <li><a href="/games" className="footer-link">Games</a></li>
+            <li><a href="/about" className="footer-link">About</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h3 className="footer-title">Follow Us</h3>
+          <ul className="footer-list">
+            <li>Instagram</li>
+            <li>Twitter</li>
+            <li>YouTube</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p className="footer-copy">
+        © {new Date().getFullYear()} Spade's Arcade. All rights reserved.
+      </p>
+    </footer>
 
 
     </div>
