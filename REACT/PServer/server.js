@@ -10,6 +10,10 @@ app.use(express.json());
 // Twitch/IGDB credentials
 
 
+const CLIENT_ID = "1tj8rx39ifu2sun4ti1z4739s5ottx";   // Your Client ID
+const CLIENT_SECRET = "zzsagxwqjxfz4hn0cfiyjebxzqb99b"; // Your Client Secret
+
+
 let accessToken = "";
 let tokenExpiry = 0;
 
