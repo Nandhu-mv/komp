@@ -20,9 +20,9 @@
 
 .nav1 ul{ display: flex; gap: 20px; margin-right: 200px; font-size: 20px; } 
 
-.nav1 ul li{ transition: 2s;  list-style: none; font-family: "Jersey 15", sans-serif; font-size: 30px; border-radius: 10px; padding: 10px; padding-inline: 40px; } 
+.nav1 ul li{ transition: 1s;  list-style: none;text-shadow: 2px 2px 2px rgb(0, 0, 0);  font-family: "Jersey 15", sans-serif; font-size: 30px; border-radius: 10px; padding: 10px; padding-inline: 40px; } 
 
-.nav1 ul li:hover{ color: rgb(0, 159, 180); cursor: pointer; font-size: 35px;} 
+.nav1 ul li:hover{ color: rgb(255, 64, 0); text-shadow: 2px 2px 2px rgb(255, 255, 255); cursor: pointer; font-size: 30px;} 
 
 .nav1{ display: flex; justify-content: end; align-items: center; background: linear-gradient(90deg,#400200ac,#110000b0); width: 100%; height: 120px; color: white; } 
 
@@ -50,6 +50,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    z-index: 1000;
 }
 
 

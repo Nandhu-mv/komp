@@ -13,6 +13,8 @@ function Home() {
   const [gameId, setgameId] = useState(121);
   const [home, sethome] = useState(true);
 
+  // const [fav,setFav] = useState([]);
+
 
   const [search, setSearch] = useState(null);
   const [show, setShow] = useState(false);
@@ -71,12 +73,16 @@ function Home() {
 
   const fetchGamesByGenre = async () => {
     try {
+      setLoading(true)
       const res = await axios.get(
         `http://localhost:5000/games-by-genre?genre=${selectedGenre}`
       );
       setggames(res.data);
     } catch (err) {
       console.error("Error fetching games:", err);
+    }
+    finally{
+      setLoading(false)
     }
   };
 
@@ -129,7 +135,11 @@ function Home() {
 
 
   if (error) return <div style={{ color: "red" }}>{error.message}</div>;
-  if (!game) return <h2>Loading...</h2>;
+
+  if (!game) return <div className='loadingpage'>
+          <div className="loader"></div>
+
+        </div>;
 
   return (
     <div className='mainpage'>
@@ -165,8 +175,8 @@ function Home() {
           <li className='lidrop'>
             Browse <i className="fa-solid fa-caret-down"></i>
             <ul className='dropcontent'>
-              <li>All Games</li>
-              <li>Favourites</li>
+              <li onClick={() => sethome(true)} >All Games</li>
+              <li >Favourites</li>
               <li>Wishlisted</li>
             </ul>
           </li>
@@ -203,7 +213,7 @@ function Home() {
 
       {
         Loading && <div className='loadingpage'>
-          <div className="loader"></div>
+          <div className="loader1"></div>
 
         </div>
       }
@@ -239,6 +249,8 @@ function Home() {
                 <b>Platforms:</b> {game.platforms.map(p => p.name).join(", ")}
               </p>
             )}
+
+
 
           </div>
         </div>
