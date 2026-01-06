@@ -359,7 +359,7 @@
 //     return x*x
 // }
 
-// let x =11
+
 
 // console.log('sqaure of ',x,'is ',ar3(x))
 
@@ -400,7 +400,7 @@
 // }
 
 
-//                                         IIFE
+//                                         IIFE immediatly invoked  Func exp
 
 // (function (){
 //     console.log('immediatly !! ');
@@ -436,7 +436,7 @@
 
 //     let str = 'hello'
 //     let str1 = " hey "
-//     let str3 = `haloooo ${str1}`
+//     let str3 = `haloooo ${str1}` template literal
 
 //     let str4 = new String('HEY')
 
@@ -754,3 +754,41 @@
     // }
 
     // res(1,2,3,4,1,2,3,4)
+
+    // const  a = document.getElementById('text1')
+
+
+    // const toggle = ()=>{
+
+    //     if (a.style.display == 'none') {
+
+    //         a.style.display = 'block';
+            
+    //     } else {
+
+    //         a.style.display = 'none';
+            
+    //     }
+
+    // }
+    let num = document.getElementById('num')
+
+    const inc =()=>{
+        num.innerHTML = Number(num.innerHTML) + 1
+    }   
+    const dec =()=>{
+        
+        num.innerHTML = Number(num.innerHTML) - 1
+
+    }   
+
+
+
+    // document.getElementById('toggle').addEventListener('click',toggle);
+
+    document.getElementById('inc').addEventListener('click',inc);
+    document.getElementById('dec').addEventListener('click',dec);
+
+
+
+
